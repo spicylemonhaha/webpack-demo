@@ -1,9 +1,11 @@
 # demo
 ```
-//安装依赖
+//Installation dependencies
 npm i
-//安装babel相关包
+//Install babel related packages
 npm i babel-loader @babel/core
-//打包代码
+//Package code
 npm run build
+
+//For specific operations, please see the comments in webpack.config.js
 ```
