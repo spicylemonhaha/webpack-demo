@@ -1,13 +1,15 @@
 const HtmtWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin') 
 const path = require('path')
-module.exports = {
+const { merge } = require("webpack-merge")
+const devConfig = require("./dev.conf")
+const prodConfig = require("./prod.conf")
+const commonConfig = {
   entry: "./index.js",
-  mode: "development",
-  devtool: "source-map",
+  // mode: "development",
+  // devtool: "source-map",
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "./build")    
+    path: path.resolve(__dirname, "../build")    
   },
   module: {
     rules: [
@@ -29,9 +31,15 @@ module.exports = {
     new HtmtWebpackPlugin({
       title: "webpack-demo"
     }),
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
   ],
-  devServer: {
-    hot: true,
-  }
+  // devServer: {
+  //   hot: true,
+  // }
+}
+
+module.exports = function(env) {
+  const isProduction = env.production
+  const config = isProduction ? prodConfig : devConfig
+  return merge(commonConfig, config)  
 }
