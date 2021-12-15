@@ -1,12 +1,9 @@
 # demo
 ```
-cd package
-//install webpack ande webpack-cli
+//安装依赖
 npm i
-
-I gave a detailed explanation through comments in webpack.config.js,
-I hope you can understand what I want to express after reading it
-
-// Finally run the script according to your needs
+//安装babel相关包
+npm i babel-loader @babel/core
+//打包代码
 npm run build
 ```
